@@ -32,4 +32,4 @@ services:
     ports:
       - "8000:3000"
 volumes:
-  mysql_data:
+  mysql_data:ああああ

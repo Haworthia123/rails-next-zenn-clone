@@ -1,0 +1,27 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Compose
+      run: docker-compose up -d
+
+    - name: Bundler and gem install
+      run: |
+        docker-compose exec rails gem install bundler
+        docker-compose exec rails bundle install
+
+    - name: Run RuboCop
+      run: docker-compose exec rails bundle exec rubocop
+
+    - name: Run ESLint
+      run: |
+        docker-compose exec next npm install
+        docker-compose exec next npx eslint .
