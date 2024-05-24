@@ -1,7 +1,0 @@
-ja:
-  activerecord:
-    attributes:
-      article:
-        title: タイトル
-        content: 本文
-        
