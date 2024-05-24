@@ -11,9 +11,6 @@ jobs:
   # 処理① rspec がオールグリーンであることをチェック
   rspec:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: rails
     services:
       mysql:
         image: mysql:8.0.32
@@ -58,9 +55,6 @@ jobs:
   # 処理② rubocop のルール違反がないことをチェック
   rubocop:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: rails
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
